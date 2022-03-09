@@ -4,7 +4,9 @@ const fs = require('fs');
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto('https://agencewebducanada.com/search?country=Quebec&ville=Qu%C3%A9bec&page=1');
+    const url= 'https://agencewebducanada.com/search?country=Ontario&ville=Toronto';
+
+    await page.goto(url);
 
     const Agences = 'a > div > img';
     const nbrSiteListe = (await page.$$('#main-container > section > div > div:nth-child(2) > div')).length; //nombre d'agences par page
@@ -38,7 +40,7 @@ const fs = require('fs');
             await page.waitForSelector(Agences);
         }
 
-        await page.goto('https://agencewebducanada.com/search?country=Quebec&ville=Qu%C3%A9bec&page=' + (pg + 1));
+        await page.goto(url+'&page=' + (pg + 1)); //navigue vers la page suivante
 
     }
     console.log('end');
