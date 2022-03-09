@@ -4,9 +4,9 @@ const fs = require('fs');
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    const url= 'https://agencewebducanada.com/search?country=Ontario&ville=Toronto';
+    const url = 'https://agencewebducanada.com/search?country=Ontario&ville=Toronto';
 
-    await page.goto(url);
+    await page.goto(url);  //navigue vers l'url
 
     const Agences = 'a > div > img';
     const nbrSiteListe = (await page.$$('#main-container > section > div > div:nth-child(2) > div')).length; //nombre d'agences par page
@@ -24,27 +24,23 @@ const fs = require('fs');
             await clickSelector(Agences, page, pasAgence);
             try { //vérifie si la page existe bien
                 await page.waitForSelector(mailSelector, { timeout: 3000 })
-                if ((await (page.$eval(mailSelector, el => el.innerText))) != null) {  //récupère le texte dans le selecteur de mail si il est présent sur la page
+                if ((await (page.$eval(mailSelector, el => el.innerText))) != null) {  //récupère le texte dans le selecteur de mail si il est bien présent
                     const mail = await (page.$eval(mailSelector, el => el.innerText));
                     console.log(mail); //écrit le mail dans la console
-                    fs.writeFile('agences.txt', mail + "\n", { flag: 'a+' }, err => {
+                    fs.writeFile('agences.txt', mail + "\n", { flag: 'a+' }, err => { //ecrit le mail dans le fichier agence.txt
                         if (err) {
-                          console.error(err)
-                          return
+                            console.error(err)
+                            return
                         }
-                        //file written successfully
-                      })
+                    })
                 }
-            } catch (error) {}
+            } catch (error) { }
             await page.goBack();
             await page.waitForSelector(Agences);
         }
-
-        await page.goto(url+'&page=' + (pg + 1)); //navigue vers la page suivante
-
+        await page.goto(url + '&page=' + (pg + 1)); //navigue vers la page suivante
     }
     console.log('end');
-
     await browser.close();
 })();
 
