@@ -4,7 +4,7 @@ const fs = require('fs');
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    const url = 'https://agencewebducanada.com/search?country=Ontario&ville=Toronto';
+    const url = ' https://agencewebducanada.com/search?';
 
     await page.goto(url);  //navigue vers l'url
 
