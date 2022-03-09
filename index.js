@@ -26,7 +26,6 @@ const fs = require('fs');
                 await page.waitForSelector(mailSelector, { timeout: 3000 })
                 if ((await (page.$eval(mailSelector, el => el.innerText))) != null) {  //récupère le texte dans le selecteur de mail si il est bien présent
                     const mail = await (page.$eval(mailSelector, el => el.innerText));
-                    console.log(mail); //écrit le mail dans la console
                     fs.writeFile('agences.txt', mail + "\n", { flag: 'a+' }, err => { //ecrit le mail dans le fichier agence.txt
                         if (err) {
                             console.error(err)
