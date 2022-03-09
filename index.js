@@ -20,14 +20,10 @@ const puppeteer = require('puppeteer');
             await page.waitForSelector(Agences);
             await clickSelector(Agences, page, pas);
             await page.waitForSelector(mailSelector)
-            //if ((await (page.$eval(nameSelector, el => el.innerText)))!= null){
-            //const name = await (page.$eval(nameSelector, el => el.innerText));
-            //console.log(name);}
             if ((await (page.$eval(mailSelector, el => el.innerText)))!= null){
             const mail = await (page.$eval(mailSelector, el => el.innerText));
             console.log(mail);}
             await page.goBack();
-            //await page.goto('https://agencewebducanada.com/search?country=Quebec&ville=Qu%C3%A9bec&page='+pg);
             await page.waitForSelector(Agences);
         }
 
@@ -35,7 +31,6 @@ const puppeteer = require('puppeteer');
         
     }
     console.log('end');
-    await page.screenshot({ path: 'screenshot/1.png' });
 
     await browser.close();
 })();
