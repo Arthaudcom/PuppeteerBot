@@ -4,17 +4,20 @@ const fs = require('fs');
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    const url = ' https://agencewebducanada.com/search?';
+    const url = 'https://agencewebducanada.com/search?';
 
     await page.goto(url);  //navigue vers l'url
 
     const Agences = 'a > div > img';
     const nbrSiteListe = (await page.$$('#main-container > section > div > div:nth-child(2) > div')).length; //nombre d'agences par page
-    console.log(nbrSiteListe);
+    console.log("nombre de site par page: "+nbrSiteListe);
 
     const element = await page.$('div > nav > ul > li:nth-child(12)');
     const nbrPageListe = await page.evaluate(element => element.textContent, element);  //nombre de pages
-    console.log(nbrPageListe);
+    const waitingTime = nbrPageListe*nbrSiteListe/80;
+    console.log("Nombre de pages: "+nbrPageListe);
+    console.log("Rapidité du bot: 80 mails par minute");
+    console.log("Temps d'attente estimé: " + Math.round(waitingTime) + "mn");
 
     const mailSelector = " div > div:nth-child(2) > a:nth-child(5)";
 
