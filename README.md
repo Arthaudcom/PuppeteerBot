@@ -1,14 +1,27 @@
 # Pupeteer bot
+## Pre-requis
+Installer node
 
+```bash
+npm install
+```
 ## Lancement de l'app
-
 Se rendre sur 
  ```bash
  https://agencewebducanada.com/agences
 ```
- Possibilité de sélectionner une province puis une ville
+ Possibilité de sélectionner une province puis une ville. Une fois que vous avez choisi les détails, lancez la recherche puis copiez l'url à la place de 
+ ```javascript
+const  url  =  'https://agencewebducanada.com/search?';
+```
+Par exemple, si je recherche les agences à Montréal, QC. La constante url va ressembler à ça :
 
-Lancement du bot :
+ ```javascript
+const  url  =  'https://agencewebducanada.com/search?country=Quebec&ville=Montr%C3%A9al';
+```
+
+Une fois que c'est fait,  enregistrez puis lancez la commande suivante dans le terminal :
+
 ```bash
 node index.js
 ```

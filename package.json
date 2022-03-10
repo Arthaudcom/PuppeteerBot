@@ -1,0 +1,23 @@
+{
+  "name": "pupeteerbot",
+  "version": "1.0.0",
+  "description": "Se rendre sur \r  ```bash\r  https://agencewebducanada.com/agences\r ```\r  Possibilité de sélectionner une province puis une ville",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arthaudcom/PupeteerBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arthaudcom/PupeteerBot/issues"
+  },
+  "homepage": "https://github.com/Arthaudcom/PupeteerBot#readme",
+  "dependencies": {
+    "puppeteer": "^13.5.1"
+  }
+}
