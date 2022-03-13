@@ -4,7 +4,7 @@ const fs = require('fs');
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    const url = 'https://agencewebducanada.com/search?';
+    const url = 'https://agencewebducanada.com/search?country=Quebec';
 
     await page.goto(url);  //navigue vers l'url
 
@@ -17,7 +17,7 @@ const fs = require('fs');
     const waitingTime = nbrPageListe*nbrSiteListe/80;
     console.log("Nombre de pages: "+nbrPageListe);
     console.log("Rapidité du bot: 80 mails par minute");
-    console.log("Temps d'attente estimé: " + Math.round(waitingTime) + "mn");
+    console.log("Temps d'attente estimé: " + Math.round(waitingTime) + "min");
 
     const mailSelector = " div > div:nth-child(2) > a:nth-child(5)";
 

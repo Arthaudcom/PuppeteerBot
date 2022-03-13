@@ -1,7 +1,10 @@
 # Pupeteer bot
 ## Pre-requis
-Installer node
+1ère étape:
+Installer Node
 
+2ème étape: 
+Saisir la commande suivante dans le terminal:
 ```bash
 npm install
 ```
@@ -10,7 +13,7 @@ Se rendre sur
  ```bash
  https://agencewebducanada.com/agences
 ```
- Possibilité de sélectionner une province puis une ville. Une fois que vous avez choisi les détails, lancez la recherche puis copiez l'url à la place de 
+ Possibilité de sélectionner une province puis une ville. Une fois que vous avez choisi les détails, lancez la recherche puis copiez l'url (dans le fichier index.js, ligne 7) à la place de 
  ```javascript
 const  url  =  'https://agencewebducanada.com/search?';
 ```
