@@ -51,6 +51,8 @@ bar.etaBuffer = 12;
     }
     console.log('end');
     await browser.close();
+    bar.stop();
+    die();
 })();
 
 /**
